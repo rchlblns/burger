@@ -1,2 +1,3 @@
-const dbConnection = require("connection.js");
+const connection = require("connection.js");
+
 
