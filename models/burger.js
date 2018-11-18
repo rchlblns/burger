@@ -1,4 +1,4 @@
-const orm = require("orm");
+const orm = require("../config/orm.js");
 
 const burger = {
 
@@ -18,7 +18,14 @@ const burger = {
         orm.updateOne("burgers", objColVals, condition, function(res){
             cb(res);
         });
+    },
+
+    deleteOne: function(table, condition, cb){
+        orm.deleteOne("burgers", table, condition, function(res){
+            cb(res);
+        });
     }
 };
 
+//Exports the burger model
 module.exports = burger;

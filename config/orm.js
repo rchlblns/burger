@@ -1,10 +1,40 @@
 //Imports MySQL connection
-const connection = require("connection.js");
+const connection = require("../config/connection.js");
+
+
+function printQuestionMarks(num) {
+    var arr = [];
+  
+    for (var i = 0; i < num; i++) {
+      arr.push("?");
+    }
+  
+    return arr.toString();
+}
+
+function objToSql(ob) {
+    var arr = [];
+  
+    for (var key in ob) {
+      var value = ob[key];
+      if (Object.hasOwnProperty.call(ob, key)) {
+        
+        if (typeof value === "string" && value.indexOf(" ") >= 0) {
+          value = "'" + value + "'";
+        }
+
+        arr.push(key + "=" + value);
+
+      }
+    }
+
+    return arr.toString();
+}
 
 const orm = {
     
     selectAll: function(tableInput, cb){
-        var queryString = "SELECT * FROM" + tableInput + ";";
+        const queryString = "SELECT * FROM" + tableInput + ";";
 
         connection.query(queryString, function(err, result){
 
@@ -18,13 +48,14 @@ const orm = {
 
     insertOne: function(table, cols, vals, cb) {
 
-        var queryString = "INSERT INTO " + table;
+        const queryString = "INSERT INTO " + table;
 
-        queryString += "(";
+        queryString += " (";
         queryString += cols.toString();
-        queryString += ")";
+        queryString += ") ";
         queryString += "VALUES (";
-        queryString += ")";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
 
         console.log(queryString);
 
@@ -40,16 +71,33 @@ const orm = {
 
     updateOne: function(table, objColVals, condition, cb){
 
-        var queryString = "UPDATE " + table;
+        const queryString = "UPDATE " + table;
 
-        queryString += "SET ";
-        queryString += objColVals;
+        queryString += " SET ";
+        queryString += obToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
         connection.query(queryString, function(err, result){
 
+            if (err){
+                throw err;
+            }
+
+            cb(result);
+        });
+    },
+
+    deleteOne: function(table, condition, cb){
+
+        const queryString = "DELETE FROM " + table;
+
+        queryString += " WHERE ";
+        queryString += condition;
+
+        connection.query(queryString, function(err,result){
+            
             if (err){
                 throw err;
             }
