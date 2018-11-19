@@ -1,16 +1,19 @@
 //Sets up MySQL connection
 const mysql = require("mysql");
-const connection
+require("dotenv").config({path: "../.env"});
+let connection;
 
+//Database is JawsDB on Heroku
 if (process.env.JAWSDB_URL){
     connection = mysql.createConnection(process.env.JAWSDB_URL);
+//Database is local
 } else {
     connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
-        database: "burgers_db",
         user: "root",
-        password: "root"
+        password: "root",
+        database: "burgers_db"
     });
 }
 
