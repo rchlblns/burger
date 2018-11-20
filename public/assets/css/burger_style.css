@@ -1,5 +1,5 @@
 body {
-    background-color: lightgoldenrodyellow;
+    background-color: aliceblue;
 }
 
 h1 {
@@ -9,11 +9,11 @@ h1 {
 
 h2 {
     font-family: "Bungee Inline", cursive; 
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
 img {
-    width: 650px;
+    width: 700px;
 }
 
 p, ul, label {

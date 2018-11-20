@@ -77,8 +77,7 @@ const orm = {
     },
 
     deleteOne: function(table, condition, cb){
-
-        const queryString = "DELETE FROM " + table;
+        let queryString = "DELETE FROM " + table;
 
         queryString += " WHERE ";
         queryString += condition;

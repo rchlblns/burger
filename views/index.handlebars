@@ -2,28 +2,42 @@
 	{{!-- Burger Listings --}}
 	<div class="row">
 		{{!-- Burgers To Eat --}}
-		<div class="col-sm-6 p-5">
+		<div class="col-sm-6 p-3">
 			<h2 class="text-center">Ready To Eat</h2>
 			<ul>
 				{{#each burgers}}
 				{{#unless this.devoured}}
-				<li>
-					{{this.id}}. {{this.burger_name}}
-				</li>
+				<form action="/api/burgers{{id}}" method="PUT">
+					<div class="input-group">
+						<li class="form-control">
+							{{this.id}}. {{this.burger_name}}
+						</li>
+						<span class="input-group-btn">
+							<button class="btn btn-success devour-button" type="submit">Devour it!</button>
+						</span>
+					</div>
+				</form>
 				{{/unless}}
 				{{/each}}
 			</ul>
 		</div>
 
 		{{!-- Eaten Burgers --}}
-		<div class="col-sm-6 p-5">
+		<div class="col-sm-6 p-3">
 			<h2 class="text-center">Already Eaten</h2>
 			<ul>
 				{{#each burgers}}
 				{{#if this.devoured}}
-				<li>
-					{{this.id}}. {{this.burger_name}}
-				</li>
+				<form action="api/burgers{{id}}" method="DELETE">
+					<div class="input-group">
+						<li class="form-control">
+							{{this.id}}. {{this.burger_name}}
+						</li>
+						<span class="input-group-btn">
+							<button class="btn btn-danger trash-button" type="button">Throw Away</button>
+						</span>
+					</div>
+				</form>
 				{{/if}}
 				{{/each}}
 			</ul>
@@ -35,13 +49,14 @@
 	{{!-- Form for adding new burger --}}
 	<div class="row text-center">
 		<div class="col-sm-4 mx-auto">
-			<form action="burger/create" method="POST">
-				<h2>Order A New Burger</h2>
+			<h2>Order A New Burger</h2>
+			<form class="create-form">
 				<div class="form-group">
-					<label for="new_burger">What would you like to eat?</label>
-					<textarea class="form-control" id="newBurger" rows="1"></textarea>
+					<input class="form-control text-center" id="new_Burger" name="burger_name" placeholder="Type in a burger here!">
+					<br>
+					{{!-- Submit button --}}
+					<button type="button" class="btn btn-outline-dark" id="submitBtn">Place Your Order</button>
 				</div>
-				<button type="button" class="btn btn-outline-dark" id="submitBtn">Place Order</button>
 			</form>
 		</div>
 	</div>
