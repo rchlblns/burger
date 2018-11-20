@@ -1,7 +1,7 @@
 //Imports MySQL connection
 const connection = require("../config/connection.js");
 
-
+//Function to print question marks
 function printQuestionMarks(num) {
     let arr = [];
   
@@ -12,6 +12,7 @@ function printQuestionMarks(num) {
     return arr.toString();
 }
 
+//Function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
     let arr = [];
 
@@ -28,6 +29,7 @@ function objToSql(ob) {
     return arr.toString();
 }
 
+//All of our SQL statement functions in one object
 const orm = {
     selectAll: function(tableInput, cb){
         let queryString = "SELECT * FROM " + tableInput + ";";
@@ -58,6 +60,7 @@ const orm = {
             cb(result);
         });
     },
+    //E.g. objColVals = {burger_name: Crusty Burger, devoured: false}
     updateOne: function(table, objColVals, condition, cb){
         let queryString = "UPDATE " + table;
 

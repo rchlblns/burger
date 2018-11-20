@@ -17,7 +17,7 @@ router.get("/", function (req, res) {
 });
 
 //POST request adds burger to the database
-router.post("/api/burgers", function (req, res) {
+router.post("/burgers/create", function (req, res) {
     burger.insertOne([
         "burger_name"
     ], [
@@ -28,7 +28,7 @@ router.post("/api/burgers", function (req, res) {
 });
 
 //PUT request updates burger from "not devoured" to "devoured"
-router.put("/api/burgers:id", function (req, res) {
+router.put("/burgers/update:id", function (req, res) {
     let condition = "id = " + req.params.id;
 
     console.log("Burger status changed for", condition);
@@ -45,7 +45,7 @@ router.put("/api/burgers:id", function (req, res) {
     });
 });
 
-router.delete("/api/burgers:id", function (req, res) {
+router.delete("/burgers/delete:id", function (req, res) {
     let condition = "id = " + req.params.id;
 
     console.log("Burger deleted", condition);
