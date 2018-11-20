@@ -1,52 +1,48 @@
 <div class="container">
-
-	{{!-- Page Header --}}
-	<div class="row">
-		<div class="center col-sm-12">
-			<h1>Eat Da Burger!</h1>
-		</div>
-	</div>
-
 	{{!-- Burger Listings --}}
 	<div class="row">
-		<div class="col-sm-6">
-			<h2>Available Burgers</h2>
+		{{!-- Burgers To Eat --}}
+		<div class="col-sm-6 p-5">
+			<h2 class="text-center">Ready To Eat</h2>
 			<ul>
 				{{#each burgers}}
-					{{#unless this.devoured}}
+				{{#unless this.devoured}}
 				<li>
-					{{this.id}}{{this.burger_name}}
+					{{this.id}}. {{this.burger_name}}
 				</li>
-					{{/unless}}
+				{{/unless}}
 				{{/each}}
 			</ul>
 		</div>
 
-		<div class="col-sm-6">
-			<h2>Burgers That Have Been Eaten</h2>
+		{{!-- Eaten Burgers --}}
+		<div class="col-sm-6 p-5">
+			<h2 class="text-center">Already Eaten</h2>
 			<ul>
 				{{#each burgers}}
-					{{#if this.devoured}}
+				{{#if this.devoured}}
 				<li>
-					{{this.id}}{{this.burger_name}}
+					{{this.id}}. {{this.burger_name}}
 				</li>
-					{{/if}}
+				{{/if}}
 				{{/each}}
 			</ul>
 		</div>
 	</div>
 
+	<br><br>
+
 	{{!-- Form for adding new burger --}}
-
-	<div class="row">
-		<h2>Add A Burger!</h2>
-		<div class="center col-sm-12">
-			<div class="form-group">
-				<label for="new_burger">Add a burger that you'd like to eat</label>
-				<textarea class="form-control" id="newBurger" rows="2"></textarea>
-			</div>
+	<div class="row text-center">
+		<div class="col-sm-4 mx-auto">
+			<form action="burger/create" method="POST">
+				<h2>Order A New Burger</h2>
+				<div class="form-group">
+					<label for="new_burger">What would you like to eat?</label>
+					<textarea class="form-control" id="newBurger" rows="1"></textarea>
+				</div>
+				<button type="button" class="btn btn-outline-dark" id="submitBtn">Place Order</button>
+			</form>
 		</div>
-
-		<button type="button" class="btn btn-outline-dark">Place Order</button>
 	</div>
 </div>

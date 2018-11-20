@@ -1,0 +1,21 @@
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+h1 {
+    font-family: "Bungee Inline", cursive; 
+    font-size: 5em;
+}
+
+h2 {
+    font-family: "Bungee Inline", cursive; 
+    font-size: 3em;
+}
+
+img {
+    width: 650px;
+}
+
+p, ul, label {
+    font-family: "Roboto", sans-serif;
+}
