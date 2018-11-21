@@ -1,4 +1,4 @@
-# Eat Da Burger
+# Eat The Burger
 
 Assignment for Week 14 of UT Coding Bootcamp in Houston. This full-stack application logs burgers with a homemade ORM using the MVC design pattern. Users can add new burgers to the database and also mark them as "devoured" with a button click.
 
