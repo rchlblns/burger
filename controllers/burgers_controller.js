@@ -23,7 +23,8 @@ router.post("/burgers/create", function (req, res) {
     ], [
             req.body.burger_name
     ], function (result) {
-            res.json({ id: result.insertId });
+            // res.json({ id: result.insertId });
+            res.redirect("/");
     });
 });
 
