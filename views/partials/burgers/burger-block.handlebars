@@ -1,8 +1,8 @@
 <div class="input-group">
-    <li class="form-control text-left">
+    <li class="form-control text-center">
         {{burger_name}}
         {{#unless devoured}}
-            <button class="devour-burger btn-success align-right" data-id="{{id}}" data-newdevour="{{this.devoured}}">Eat it!</button>
+            <button class="devour-burger btn-success" data-id="{{id}}" data-newdevour="{{this.devoured}}">Eat it!</button>
         {{/unless}}
     </li>
 </div>
