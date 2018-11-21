@@ -50,7 +50,7 @@ const orm = {
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        console.log(queryString);
+        // console.log(queryString);
 
         connection.query(queryString, vals, function(err, result){
             if (err){
@@ -65,7 +65,7 @@ const orm = {
         let queryString = "UPDATE " + table;
 
         queryString += " SET ";
-        queryString += obToSql(objColVals);
+        queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 

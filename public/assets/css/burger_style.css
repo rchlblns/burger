@@ -19,3 +19,7 @@ img {
 p, ul, label {
     font-family: "Roboto", sans-serif;
 }
+
+li {
+    list-style-type: none;
+}

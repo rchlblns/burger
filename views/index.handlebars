@@ -6,18 +6,9 @@
 			<h2 class="text-center">Ready To Eat</h2>
 			<ul>
 				{{#each burgers}}
-				{{#unless this.devoured}}
-				<form action="/burgers/update{{id}}" method="POST">
-					<div class="input-group">
-						<li class="form-control">
-							{{this.id}}. {{this.burger_name}}
-						</li>
-						<span class="input-group-btn">
-							<button class="btn btn-success devour-button" type="submit">Devour it!</button>
-						</span>
-					</div>
-				</form>
-				{{/unless}}
+					{{#unless devoured}}
+						{{> burgers/burger-block devoured=false}}
+					{{/unless}}
 				{{/each}}
 			</ul>
 		</div>
@@ -27,18 +18,9 @@
 			<h2 class="text-center">Already Eaten</h2>
 			<ul>
 				{{#each burgers}}
-				{{#if this.devoured}}
-				<form action="/burgers/delete{{id}}" method="POST">
-					<div class="input-group">
-						<li class="form-control">
-							{{this.id}}. {{this.burger_name}}
-						</li>
-						<span class="input-group-btn">
-							<button class="btn btn-danger trash-button" type="button">Trash it!</button>
-						</span>
-					</div>
-				</form>
-				{{/if}}
+					{{#if devoured}}
+						{{> burgers/burger-block devoured=true}}
+					{{/if}}
 				{{/each}}
 			</ul>
 		</div>

@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
         const hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
+        // console.log(hbsObject);
         res.render("index", hbsObject);
     });
 });
@@ -23,7 +23,7 @@ router.post("/burgers/create", function (req, res) {
     ], [
             req.body.burger_name
     ], function (result) {
-            // res.json({ id: result.insertId });
+            console.log(({ id: result.insertId }));
             res.redirect("/");
     });
 });
@@ -44,6 +44,7 @@ router.put("/burgers/update:id", function (req, res) {
             res.status(200).end();
         }
     });
+
 });
 
 router.delete("/burgers/delete:id", function (req, res) {

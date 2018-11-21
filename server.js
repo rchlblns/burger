@@ -20,9 +20,9 @@ const router = require("./controllers/burgers_controller");
 
 app.use(router);
 
-const methodOverride = require("method-override");
+// const methodOverride = require("method-override");
 
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
 
 // Port information
 const PORT = process.env.PORT || 8000;
